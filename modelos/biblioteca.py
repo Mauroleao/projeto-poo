@@ -1,4 +1,5 @@
 from modelos.avaliacao import Avaliacao
+from modelos.itens.item_biblioteca import ItemBiblioteca
 
 class Biblioteca:
     bibliotecas = []
@@ -6,6 +7,7 @@ class Biblioteca:
         self.nome = nome
         self._ativo = False
         self._avaliacao = []
+        self._itens = []  # Adicione esta linha
         Biblioteca.bibliotecas.append(self)
     def __str__(self):
         return self.nome
@@ -35,5 +37,27 @@ class Biblioteca:
         soma = sum(avaliacao.nota for avaliacao in self._avaliacao)
         media = round(soma / len(self._avaliacao), 1)
         return media
+    
+    def adicionar_item(self, item):
+        if isinstance(item, ItemBiblioteca):
+            self._itens.append(item)
+
+    def exibir_itens(self):
+        print(f"Itens na biblioteca {self.nome}:\n")
+        for i, item in enumerate(self._itens, start=1):
+            if hasattr(item, "isbn"):
+                msg_livro = f"{i}. Titulo: {item._titulo} | Autor: {item._autor} | Preço: R${item._preco} | ISBN: {item.isbn}"
+                print(msg_livro)
+            else:
+                msg_revista = f"{i}. Titulo: {item._titulo} | Autor: {item._autor} | Preço: R${item._preco} | Edição: {item.edicao}"
+                print(msg_revista)
+
+
+
+class Livro(ItemBiblioteca):
+    def __init__(self, titulo, autor, preco, isbn):
+        super().__init__(titulo, autor, preco)
+        self.isbn
+
 
 
