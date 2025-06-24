@@ -9,6 +9,10 @@ livro1 = Livro("O Senhor dos Anéis", "J. R. R. Tolkien", 40.0, "9788532511017")
 livro2 = Livro("1984", "George Orwell", 30.0, "9788532522921")
 revista1 = Revista("Revista de Tecnologia", "Tech Magazine", 15.0, "Quinta")
 
+
+livro1.aplicar_desconto()
+revista1.aplicar_desconto()
+
 biblioteca_cidade.adicionar_item(livro1)
 biblioteca_cidade.adicionar_item(livro2)
 biblioteca_cidade.adicionar_item(revista1)
