@@ -50,7 +50,7 @@ atualiza_filme(1, nome='O Poderoso Chefão: Parte II', ano=1974, nota=9.0)
 
 #Excluir dados
 
-def exclui_filme(id):
+def remover_filme(id):
     Session = sessionmaker(bind=engine)
     session = Session()
     filme = session.query(Filme).filter(Filme.id == id).first()
@@ -59,4 +59,4 @@ def exclui_filme(id):
         session.commit()
     session.close()
 
-exclui_filme(2)    
+remover_filme(2)    
